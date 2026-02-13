@@ -3,79 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Products Store - Digital Products Powered by AI</title>
+  <title>AI Products Store - Premium Digital Products</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f23 100%);
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
       min-height: 100vh;
       color: white;
     }
     .header {
       padding: 30px 20px;
       text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
     .header h1 {
       font-size: 32px;
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .header p {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.9);
       font-size: 14px;
     }
     .hero {
-      padding: 60px 20px;
+      padding: 50px 20px;
       text-align: center;
       max-width: 800px;
       margin: 0 auto;
     }
     .hero h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #fff;
+      font-size: 32px;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .hero p {
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.8);
       font-size: 16px;
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
-    .tags {
+    .benefits {
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
       margin-bottom: 30px;
     }
-    .tag {
+    .benefit {
       background: rgba(102,126,234,0.2);
       padding: 8px 16px;
       border-radius: 20px;
       color: #667eea;
       font-size: 12px;
+      border: 1px solid rgba(102,126,234,0.3);
     }
     .products {
       padding: 40px 20px;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
     }
     .products h3 {
-      font-size: 24px;
+      font-size: 26px;
       margin-bottom: 25px;
       text-align: center;
+      color: #fff;
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
     }
     .product {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.08);
       border-radius: 16px;
       padding: 25px;
       border: 1px solid rgba(255,255,255,0.1);
@@ -84,22 +85,32 @@
     .product:hover {
       transform: translateY(-5px);
       border-color: rgba(102,126,234,0.5);
+      box-shadow: 0 10px 40px rgba(102,126,234,0.2);
+    }
+    .product-badge {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 12px;
     }
     .product-icon {
-      font-size: 50px;
-      text-align: center;
-      margin-bottom: 15px;
+      font-size: 48px;
+      margin-bottom: 12px;
     }
     .product h4 {
       font-size: 18px;
       margin-bottom: 8px;
       color: #fff;
     }
-    .product p {
-      color: rgba(255,255,255,0.6);
+    .product-desc {
+      color: rgba(255,255,255,0.7);
       font-size: 13px;
-      margin-bottom: 15px;
-      line-height: 1.4;
+      margin-bottom: 12px;
+      line-height: 1.5;
     }
     .features {
       display: flex;
@@ -108,10 +119,10 @@
       margin-bottom: 20px;
     }
     .feature {
-      background: rgba(102,126,234,0.2);
+      background: rgba(102,126,234,0.15);
       padding: 4px 10px;
-      border-radius: 12px;
-      color: #667eea;
+      border-radius: 10px;
+      color: #8b9cf6;
       font-size: 10px;
     }
     .bottom {
@@ -120,17 +131,17 @@
       align-items: center;
     }
     .price {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: bold;
       color: #fff;
     }
     .price span {
       font-size: 14px;
-      color: rgba(255,255,255,0.4);
-      margin-left: 5px;
+      color: rgba(255,255,255,0.5);
+      margin-left: 4px;
     }
     .buy-btn {
-      background: linear-gradient(135deg, #6772e5 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
       color: #fff;
       border: none;
       padding: 12px 24px;
@@ -142,144 +153,178 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .buy-btn:hover {
       opacity: 0.9;
       transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(0,198,251,0.4);
     }
     .footer {
-      padding: 30px 20px;
+      padding: 40px 20px;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
+      background: rgba(0,0,0,0.2);
+      margin-top: 50px;
     }
     .footer p {
-      color: rgba(255,255,255,0.4);
-      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .guarantee {
+      background: rgba(76,175,80,0.1);
+      border: 1px solid rgba(76,175,80,0.3);
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin: 30px auto;
+      max-width: 500px;
+      text-align: center;
+    }
+    .guarantee p {
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+    }
+    .guarantee strong {
+      color: #4CAF50;
     }
   </style>
 </head>
 <body>
   <header class="header">
-    <h1>🤖 AI Products Store</h1>
-    <p>Premium AI-generated digital products • Instant Delivery • 🔒 Stripe Secured</p>
+    <h1>🤖 Premium AI Products</h1>
+    <p>Ready-to-use digital products • Instant Download • Lifetime Access</p>
   </header>
 
   <section class="hero">
-    <h2>AI Creates. 💰 You Profit.</h2>
-    <p>Our AI works 24/7 creating amazing digital products. You earn money while you sleep. 💤</p>
-    <div class="tags">
-      <span class="tag">✅ Instant Download</span>
-      <span class="tag">✅ 24/7 Auto Delivery</span>
-      <span class="tag">✅ Stripe Secure Payment</span>
+    <h2>🚀 Transform Your Work with AI</h2>
+    <p>Stop struggling with prompts and templates. Get professionally crafted, battle-tested resources that actually work. Save hours of time and get results faster.</p>
+    <div class="benefits">
+      <span class="benefit">⚡ Instant Download</span>
+      <span class="benefit">🔄 Lifetime Updates</span>
+      <span class="benefit">✅ Proven Results</span>
+      <span class="benefit">🔒 Secure Payment</span>
     </div>
   </section>
 
   <section class="products">
-    <h3>🛒 Featured Products</h3>
+    <h3>🔥 Best-Selling Products</h3>
+    
     <div class="product-grid">
       <!-- Product 1 -->
       <div class="product">
+        <span class="product-badge">BESTSELLER</span>
         <div class="product-icon">🎯</div>
         <h4>ChatGPT Master Prompts</h4>
-        <p>500+ Proven prompts for business, coding, writing & more</p>
+        <p class="product-desc">500+ proven prompts for business, coding, writing & creative work. Tested and refined for maximum effectiveness.</p>
         <div class="features">
-          <span class="feature">Business</span>
-          <span class="feature">Coding</span>
-          <span class="feature">Writing</span>
+          <span class="feature">Business Strategy</span>
+          <span class="feature">Code Generation</span>
+          <span class="feature">Content Writing</span>
+          <span class="feature">Analysis</span>
         </div>
         <div class="bottom">
           <div class="price">$19<span>USD</span></div>
-          <a href="https://buy.stripe.com/aFacN6cQncwmd1xehi04808" target="_blank" class="buy-btn">💳 Pay $19</a>
+          <a href="https://buy.stripe.com/aFacN6cQncwmd1xehi04808" target="_blank" class="buy-btn">💳 Get Now</a>
         </div>
       </div>
       
       <!-- Product 2 -->
       <div class="product">
+        <span class="product-badge">NEW</span>
         <div class="product-icon">🎨</div>
-        <h4>Midjourney Art Pack</h4>
-        <p>1000+ Midjourney prompts for stunning AI art</p>
+        <h4>Midjourney Art Master</h4>
+        <p class="product-desc">1000+ Midjourney prompts for stunning AI art. Create professional portraits, landscapes, and abstract art instantly.</p>
         <div class="features">
           <span class="feature">Portraits</span>
           <span class="feature">Landscapes</span>
-          <span class="feature">Abstract</span>
+          <span class="feature">Abstract Art</span>
+          <span class="feature">Character Design</span>
         </div>
         <div class="bottom">
           <div class="price">$29<span>USD</span></div>
-          <a href="https://buy.stripe.com/cNi7sM4jRdAq6D93CE04809" target="_blank" class="buy-btn">💳 Pay $29</a>
+          <a href="https://buy.stripe.com/cNi7sM4jRdAq6D93CE04809" target="_blank" class="buy-btn">💳 Get Now</a>
         </div>
       </div>
       
       <!-- Product 3 -->
       <div class="product">
         <div class="product-icon">📝</div>
-        <h4>Notion Templates</h4>
-        <p>Complete business templates for Notion</p>
+        <h4>Notion Business Templates</h4>
+        <p class="product-desc">Complete Notion workspace templates. Organize your business, projects, and life with proven systems.</p>
         <div class="features">
-          <span class="feature">Projects</span>
-          <span class="feature">Finance</span>
-          <span class="feature">Habits</span>
+          <span class="feature">Project Management</span>
+          <span class="feature">Finance Tracker</span>
+          <span class="feature">Habit System</span>
+          <span class="feature">Content Calendar</span>
         </div>
         <div class="bottom">
           <div class="price">$24<span>USD</span></div>
-          <a href="https://buy.stripe.com/aFa8wQbMj67YgdJ5KM0480a" target="_blank" class="buy-btn">💳 Pay $24</a>
+          <a href="https://buy.stripe.com/aFa8wQbMj67YgdJ5KM0480a" target="_blank" class="buy-btn">💳 Get Now</a>
         </div>
       </div>
       
       <!-- Product 4 -->
       <div class="product">
+        <span class="product-badge">POPULAR</span>
         <div class="product-icon">✍️</div>
         <h4>AI Copywriting Bundle</h4>
-        <p>Copy that converts - proven templates</p>
+        <p class="product-desc">Copy that converts. Sales pages, emails, ads, and social media copy that actually gets results.</p>
         <div class="features">
-          <span class="feature">Sales</span>
-          <span class="feature">Emails</span>
-          <span class="feature">Ads</span>
+          <span class="feature">Sales Pages</span>
+          <span class="feature">Email Sequences</span>
+          <span class="feature">Ad Copy</span>
+          <span class="feature">Social Posts</span>
         </div>
         <div class="bottom">
           <div class="price">$39<span>USD</span></div>
-          <a href="https://buy.stripe.com/9B63cwcQn53UgdJ3CE0480b" target="_blank" class="buy-btn">💳 Pay $39</a>
+          <a href="https://buy.stripe.com/9B63cwcQn53UgdJ3CE0480b" target="_blank" class="buy-btn">💳 Get Now</a>
         </div>
       </div>
       
       <!-- Product 5 -->
       <div class="product">
         <div class="product-icon">📧</div>
-        <h4>Email Marketing Suite</h4>
-        <p>Ready-to-use email campaigns</p>
+        <h4>Email Marketing System</h4>
+        <p class="product-desc">Ready-to-use email campaigns. Welcome sequences, sales emails, and newsletters that engage your audience.</p>
         <div class="features">
-          <span class="feature">Welcome</span>
-          <span class="feature">Sales</span>
+          <span class="feature">Welcome Series</span>
+          <span class="feature">Sales Campaigns</span>
+          <span class="feature">Newsletters</span>
           <span class="feature">Automation</span>
         </div>
         <div class="bottom">
           <div class="price">$29<span>USD</span></div>
-          <a href="https://buy.stripe.com/4gM3cw9Eb0NE0eL0qs0480c" target="_blank" class="buy-btn">💳 Pay $29</a>
+          <a href="https://buy.stripe.com/4gM3cw9Eb0NE0eL0qs0480c" target="_blank" class="buy-btn">💳 Get Now</a>
         </div>
       </div>
       
       <!-- Product 6 -->
       <div class="product">
+        <span class="product-badge">TRENDING</span>
         <div class="product-icon">🎬</div>
-        <h4>YouTube Video Ideas</h4>
-        <p>1000+ viral video ideas with scripts</p>
+        <h4>YouTube Content Engine</h4>
+        <p class="product-desc">1000+ viral video ideas with full scripts. Get views and subscribers with proven content formulas.</p>
         <div class="features">
-          <span class="feature">Viral</span>
-          <span class="feature">Scripts</span>
-          <span class="feature">SEO</span>
+          <span class="feature">Viral Topics</span>
+          <span class="feature">Full Scripts</span>
+          <span class="feature">SEO Keywords</span>
+          <span class="feature">Thumbnail Ideas</span>
         </div>
         <div class="bottom">
           <div class="price">$34<span>USD</span></div>
-          <a href="https://buy.stripe.com/cNifZidUr0NEgdJdde0480d" target="_blank" class="buy-btn">💳 Pay $34</a>
+          <a href="https://buy.stripe.com/cNifZidUr0NEgdJdde0480d" target="_blank" class="buy-btn">💳 Get Now</a>
         </div>
       </div>
+    </div>
+
+    <div class="guarantee">
+      <p><strong>🛡️ 30-Day Money Back Guarantee</strong><br>Not satisfied? Get a full refund, no questions asked.</p>
     </div>
   </section>
 
   <footer class="footer">
-    <p>🤖 Powered by AI • 24/7 Auto-Delivery • Secure Payments via Stripe</p>
-    <p style="margin-top:10px; color:rgba(255,255,255,0.3)">© 2024 AI Products Store</p>
+    <p>🔒 Secure payments powered by Stripe</p>
+    <p style="margin-top:10px; color:rgba(255,255,255,0.3)">© 2026 AI Products Store. All rights reserved.</p>
   </footer>
 </body>
 </html>
