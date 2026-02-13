@@ -21,7 +21,8 @@ const PRODUCTS = [
     description: '500+ Proven prompts for business, coding, writing & more',
     price: 19,
     image: '🎯',
-    features: ['Business Prompts', 'Coding Help', 'Writing Templates', 'Life Hacks']
+    features: ['Business Prompts', 'Coding Help', 'Writing Templates', 'Life Hacks'],
+    stripeLink: 'https://buy.stripe.com/aFacN6cQncwmd1xehi04808'
   },
   {
     id: 'prod_2',
@@ -29,7 +30,8 @@ const PRODUCTS = [
     description: '1000+ Midjourney prompts for stunning AI art',
     price: 29,
     image: '🎨',
-    features: ['Portrait Prompts', 'Landscape Art', 'Abstract Designs', 'Character Creation']
+    features: ['Portrait Prompts', 'Landscape Art', 'Abstract Designs', 'Character Creation'],
+    stripeLink: 'https://buy.stripe.com/cNi7sM4jRdAq6D93CE04809'
   },
   {
     id: 'prod_3',
@@ -37,7 +39,8 @@ const PRODUCTS = [
     description: 'Complete business templates for Notion',
     price: 24,
     image: '📝',
-    features: ['Project Management', 'Habit Tracker', 'Finance Tracker', 'Content Calendar']
+    features: ['Project Management', 'Habit Tracker', 'Finance Tracker', 'Content Calendar'],
+    stripeLink: 'https://buy.stripe.com/aFa8wQbMj67YgdJ5KM0480a'
   },
   {
     id: 'prod_4',
@@ -45,7 +48,8 @@ const PRODUCTS = [
     description: 'Copy that converts - proven templates',
     price: 39,
     image: '✍️',
-    features: ['Sales Pages', 'Email Sequences', 'Ad Copy', 'Social Posts']
+    features: ['Sales Pages', 'Email Sequences', 'Ad Copy', 'Social Posts'],
+    stripeLink: 'https://buy.stripe.com/9B63cwcQn53UgdJ3CE0480b'
   },
   {
     id: 'prod_5',
@@ -53,7 +57,8 @@ const PRODUCTS = [
     description: 'Ready-to-use email campaigns',
     price: 29,
     image: '📧',
-    features: ['Welcome Sequences', 'Sales Emails', 'Newsletter Templates', 'Automation']
+    features: ['Welcome Sequences', 'Sales Emails', 'Newsletter Templates', 'Automation'],
+    stripeLink: 'https://buy.stripe.com/4gM3cw9Eb0NE0eL0qs0480c'
   },
   {
     id: 'prod_6',
@@ -61,7 +66,8 @@ const PRODUCTS = [
     description: '1000+ viral video ideas with scripts',
     price: 34,
     image: '🎬',
-    features: ['Viral Topics', 'Script Templates', 'SEO Keywords', 'Thumbnail Ideas']
+    features: ['Viral Topics', 'Script Templates', 'SEO Keywords', 'Thumbnail Ideas'],
+    stripeLink: 'https://buy.stripe.com/cNifZidUr0NEgdJdde0480d'
   },
 ];
 
@@ -76,20 +82,17 @@ function App() {
     console.log('✅ Stripe configured:', STRIPE_PUBLIC_KEY.substring(0, 15) + '...');
   }, []);
 
-  // Handle purchase with Stripe
+  // Handle purchase with Stripe Payment Link
   const handleBuy = async (product: typeof PRODUCTS[0]) => {
     setIsProcessing(true);
     
-    // For demo: simulate successful purchase
-    // In production: redirect to Stripe Checkout
-    // const stripe = await (window as any).Stripe(STRIPE_PUBLIC_KEY);
-    // await stripe.redirectToCheckout({ lineItems: [{ price: 'price_xxx', quantity: 1 }], mode: 'payment' });
-    
-    setTimeout(() => {
+    // Redirect to Stripe Payment Link
+    if (product.stripeLink) {
+      window.open(product.stripeLink, '_blank');
       setPurchasedProducts([...purchasedProducts, product.id]);
-      setIsProcessing(false);
-      alert(`🎉 Purchase successful! ${product.name}\n\n📧 Check your email for download link!\n\n🔒 Secured by Stripe`);
-    }, 1500);
+    }
+    
+    setIsProcessing(false);
   };
 
   return (
@@ -287,11 +290,11 @@ function App() {
                 
                 <button
                   onClick={() => handleBuy(product)}
-                  disabled={isProcessing || purchasedProducts.includes(product.id)}
+                  disabled={isProcessing}
                   style={{
                     background: purchasedProducts.includes(product.id)
                       ? 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)'
-                      : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      : 'linear-gradient(135deg, #6772e5 0%, #7c3aed 100%)',
                     color: '#fff',
                     border: 'none',
                     padding: '15px 30px',
@@ -300,12 +303,15 @@ function App() {
                     fontWeight: 'bold',
                     cursor: 'pointer',
                     opacity: isProcessing ? 0.7 : 1,
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
                   }}
                 >
                   {purchasedProducts.includes(product.id) 
                     ? '✅ Purchased!' 
-                    : '🛒 Buy Now'}
+                    : '💳 Pay $' + product.price}
                 </button>
               </div>
             </div>
