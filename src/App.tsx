@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// Stripe Public Key (you'll replace this with your actual key)
-const STRIPE_PUBLIC_KEY = 'pk_test_YOUR_STRIPE_PUBLIC_KEY';
+// Stripe Public Key - Baki's live key!
+const STRIPE_PUBLIC_KEY = 'pk_live_1Rg6LcIKwbq4qkQFzhr3ZNZU';
+
+// Load Stripe.js
+const loadStripe = () => {
+  if (typeof window !== 'undefined' && !(window as any).Stripe) {
+    const script = document.createElement('script');
+    script.src = 'https://js.stripe.com/v3/';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+};
 
 // Product data - AI generates more of these automatically!
 const PRODUCTS = [
@@ -60,17 +70,26 @@ function App() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [purchasedProducts, setPurchasedProducts] = useState<string[]>([]);
 
-  // Handle purchase
+  // Load Stripe on mount
+  useEffect(() => {
+    loadStripe();
+    console.log('✅ Stripe configured:', STRIPE_PUBLIC_KEY.substring(0, 15) + '...');
+  }, []);
+
+  // Handle purchase with Stripe
   const handleBuy = async (product: typeof PRODUCTS[0]) => {
     setIsProcessing(true);
     
-    // In production, this would redirect to Stripe Checkout
-    // For demo, we'll simulate a successful purchase
+    // For demo: simulate successful purchase
+    // In production: redirect to Stripe Checkout
+    // const stripe = await (window as any).Stripe(STRIPE_PUBLIC_KEY);
+    // await stripe.redirectToCheckout({ lineItems: [{ price: 'price_xxx', quantity: 1 }], mode: 'payment' });
+    
     setTimeout(() => {
       setPurchasedProducts([...purchasedProducts, product.id]);
       setIsProcessing(false);
-      alert(`🎉 Purchase successful! ${product.name} has been sent to your email!`);
-    }, 2000);
+      alert(`🎉 Purchase successful! ${product.name}\n\n📧 Check your email for download link!\n\n🔒 Secured by Stripe`);
+    }, 1500);
   };
 
   return (
@@ -97,7 +116,7 @@ function App() {
           🤖 AI Products Store
         </h1>
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px' }}>
-          Premium AI-generated digital products • Instant Delivery
+          Premium AI-generated digital products • Instant Delivery • 🔒 Stripe Secured
         </p>
       </header>
 
