@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤖 AI Products Store - Digital Products</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f23 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+    header {
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    h1 {
+      font-size: 36px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h2 { font-size: 48px; margin-bottom: 20px; }
+    .hero p { color: rgba(255,255,255,0.7); font-size: 20px; line-height: 1.6; margin-bottom: 30px; }
+    .features { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+    .features span {
+      background: rgba(102,126,234,0.2);
+      padding: 10px 20px;
+      border-radius: 30px;
+      color: #667eea;
+      font-size: 14px;
+    }
+    .products { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+    .products h3 { text-align: center; font-size: 28px; margin-bottom: 30px; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    .product-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s;
+    }
+    .product-card:hover { transform: translateY(-5px); border-color: rgba(102,126,234,0.5); }
+    .product-icon { font-size: 60px; text-align: center; margin-bottom: 20px; }
+    .product-card h4 { font-size: 22px; margin-bottom: 10px; }
+    .product-card p { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+    .tags span {
+      background: rgba(102,126,234,0.2);
+      padding: 5px 12px;
+      border-radius: 15px;
+      color: #667eea;
+      font-size: 11px;
+    }
+    .price-buy { display: flex; align-items: center; justify-content: space-between; }
+    .price { font-size: 32px; font-weight: bold; }
+    .price span { color: rgba(255,255,255,0.4); font-size: 14px; margin-left: 5px; }
+    .buy-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .buy-btn:hover { transform: scale(1.05); }
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 60px;
+    }
+    footer p { color: rgba(255,255,255,0.4); font-size: 14px; }
+    footer p small { color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 10px; display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🤖 AI Products Store</h1>
+    <p style="color: rgba(255,255,255,0.6);">Premium AI-generated digital products • Instant Delivery</p>
+  </header>
+  
+  <div class="hero">
+    <h2>AI Creates. 💰 You Profit.</h2>
+    <p>Our AI works 24/7 creating amazing digital products. You earn money while you sleep. 💤</p>
+    <div class="features">
+      <span>✅ Instant Download</span>
+      <span>✅ 24/7 Auto Delivery</span>
+      <span>✅ Stripe Secure Payment</span>
+    </div>
+  </div>
+  
+  <div class="products">
+    <h3>🛒 Featured Products</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-icon">🎯</div>
+        <h4>ChatGPT Master Prompts</h4>
+        <p>500+ Proven prompts for business, coding, writing & more</p>
+        <div class="tags">
+          <span>Business Prompts</span>
+          <span>Coding Help</span>
+          <span>Writing Templates</span>
+          <span>Life Hacks</span>
+        </div>
+        <div class="price-buy">
+          <div class="price">$19<span>USD</span></div>
+          <button class="buy-btn" onclick="buy('ChatGPT Prompts', 19)">🛒 Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-icon">🎨</div>
+        <h4>Midjourney Art Pack</h4>
+        <p>1000+ Midjourney prompts for stunning AI art</p>
+        <div class="tags">
+          <span>Portrait Prompts</span>
+          <span>Landscape Art</span>
+          <span>Abstract Designs</span>
+          <span>Character Creation</span>
+        </div>
+        <div class="price-buy">
+          <div class="price">$29<span>USD</span></div>
+          <button class="buy-btn" onclick="buy('Midjourney Art Pack', 29)">🛒 Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-icon">📝</div>
+        <h4>Notion Templates</h4>
+        <p>Complete business templates for Notion</p>
+        <div class="tags">
+          <span>Project Management</span>
+          <span>Habit Tracker</span>
+          <span>Finance Tracker</span>
+          <span>Content Calendar</span>
+        </div>
+        <div class="price-buy">
+          <div class="price">$24<span>USD</span></div>
+          <button class="buy-btn" onclick="buy('Notion Templates', 24)">🛒 Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-icon">✍️</div>
+        <h4>AI Copywriting Bundle</h4>
+        <p>Copy that converts - proven templates</p>
+        <div class="tags">
+          <span>Sales Pages</span>
+          <span>Email Sequences</span>
+          <span>Ad Copy</span>
+          <span>Social Posts</span>
+        </div>
+        <div class="price-buy">
+          <div class="price">$39<span>USD</span></div>
+          <button class="buy-btn" onclick="buy('Copywriting Bundle', 39)">🛒 Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-icon">📧</div>
+        <h4>Email Marketing Suite</h4>
+        <p>Ready-to-use email campaigns</p>
+        <div class="tags">
+          <span>Welcome Sequences</span>
+          <span>Sales Emails</span>
+          <span>Newsletter Templates</span>
+          <span>Automation</span>
+        </div>
+        <div class="price-buy">
+          <div class="price">$29<span>USD</span></div>
+          <button class="buy-btn" onclick="buy('Email Marketing', 29)">🛒 Buy Now</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <div class="product-icon">🎬</div>
+        <h4>YouTube Video Ideas</h4>
+        <p>1000+ viral video ideas with scripts</p>
+        <div class="tags">
+          <span>Viral Topics</span>
+          <span>Script Templates</span>
+          <span>SEO Keywords</span>
+          <span>Thumbnail Ideas</span>
+        </div>
+        <div class="price-buy">
+          <div class="price">$34<span>USD</span></div>
+          <button class="buy-btn" onclick="buy('YouTube Ideas', 34)">🛒 Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>🤖 Powered by AI • 24/7 Auto-Delivery • Secure Payments via Stripe</p>
+    <small>© 2024 AI Products Store. All rights reserved.</small>
+  </footer>
+  
+  <script>
+    function buy(product, price) {
+      alert('🎉 Thank you for your interest in ' + product + '!\n\n💰 Price: $' + price + '\n\n📧 Your purchase has been recorded!\n\nIn production, this would redirect to Stripe checkout.');
+    }
+  </script>
+</body>
+</html>
